@@ -1,10 +1,14 @@
 import './App.css'
+import Button from './components/Button'
 
 function App() {
   return (
-    <h1>
-      Welcome To Blog App
-    </h1>
+    <div>
+      <h1>
+        Welcome To Blog App
+      </h1>
+      <Button label='Create a post' onClick={() => {}}/>
+    </div>
   )
 }
 
