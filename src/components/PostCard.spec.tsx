@@ -23,10 +23,10 @@ describe('PostCard component', () => {
     );
 
     expect(screen.getByRole('heading', { name: /test post/i })).toBeInTheDocument();
-    expect(screen.getByText(/a{200}\.\.\./i)).toBeInTheDocument(); // Excerpt truncated
+    expect(screen.getByText(/a{200}\.\.\./i)).toBeInTheDocument();
     expect(screen.getByText('John Doe')).toBeInTheDocument();
-    expect(screen.getByText('5')).toBeInTheDocument(); // Likes
-    expect(screen.getByText('3')).toBeInTheDocument(); // Comments
+    expect(screen.getByText('5')).toBeInTheDocument();
+    expect(screen.getByText('3')).toBeInTheDocument();
   });
 
   it('does not truncate if body is under 200 characters', () => {
@@ -66,19 +66,6 @@ describe('PostCard component', () => {
     expect(link).toHaveAttribute('href', `/post/${mockPost.id}`);
   });
 
-  it('applies correct styles when not liked', () => {
-    render(
-      <MemoryRouter>
-        <PostCard post={{ ...mockPost, isLiked: false }} authorName="Jane Doe" onLike={vi.fn()} />
-      </MemoryRouter>
-    );
-
-    const likeButton = screen.getByRole('button', { name: /5/i });
-    const styles = getComputedStyle(likeButton);
-
-    expect(styles.color).toBe('rgb(107, 114, 128)'); // #6b7280
-  });
-
   it('applies correct styles when liked', () => {
     render(
       <MemoryRouter>
@@ -90,5 +77,18 @@ describe('PostCard component', () => {
     const styles = getComputedStyle(likeButton);
 
     expect(styles.color).toBe('rgb(37, 99, 235)'); // #2563eb
+  });
+
+  it('applies correct styles when not liked', () => {
+    render(
+      <MemoryRouter>
+        <PostCard post={{ ...mockPost, isLiked: false }} authorName="Jane Doe" onLike={vi.fn()} />
+      </MemoryRouter>
+    );
+
+    const likeButton = screen.getByRole('button', { name: /5/i });
+    const styles = getComputedStyle(likeButton);
+
+    expect(styles.color).toBe('rgb(107, 114, 128)'); // #6b7280
   });
 });
