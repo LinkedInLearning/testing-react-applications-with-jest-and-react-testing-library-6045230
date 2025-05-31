@@ -5,7 +5,9 @@ import { Post } from './Post';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 import * as api from '../lib/api';
+import * as storage from '../lib/storage';
 import { useAuth } from '../contexts/AuthContext';
+import userEvent from '@testing-library/user-event';
 
 vi.mock('../lib/api');
 vi.mock('../lib/storage');
@@ -64,7 +66,7 @@ describe('<Post />', () => {
     vi.clearAllMocks();
 
   });
-
+  
   const renderComponent = () => {
     return (
       render(
@@ -102,5 +104,95 @@ describe('<Post />', () => {
     await waitFor(() => {
       expect(screen.getByText(/post not found/i)).toBeInTheDocument();
     });
+  });
+
+  it('handles like button toggle', async () => {
+    (storage.toggleLike as Mock).mockReturnValue(true);
+    const user = userEvent.setup()
+    renderComponent()
+
+    expect(await screen.findByText('Test Post')).toBeInTheDocument();
+
+    const likeButton = await screen.getAllByTestId('likeButton-1')[0]
+    await user.click(likeButton);
+    expect(storage.toggleLike).toHaveBeenCalledWith(1);
+  });
+
+  it('renders post content and comments', async () => {
+    renderComponent()
+
+    expect(await screen.findByText('Test Post')).toBeInTheDocument();
+    expect(screen.getByText('Jane Doe')).toBeInTheDocument();
+    expect(screen.getByText('Nice post!')).toBeInTheDocument();
+    expect(screen.getByText(/comments \(1\)/i)).toBeInTheDocument();
+  });
+
+  it('adds a new comment on submission', async () => {
+    (api.createComment as Mock).mockResolvedValue({
+      id: 2,
+      name: 'Jane Doe',
+      email: 'jane@example.com',
+      body: 'New comment',
+    });
+
+    const user = userEvent.setup()
+    renderComponent()
+
+    const textarea = await screen.findByRole('textbox');
+    // fireEvent.change(textarea, { target: { value: 'New comment' } });
+    await user.type(textarea, 'New comment');
+
+    const button = screen.getByRole('button', { name: /comment/i });
+    // fireEvent.click(button);
+    await user.click(button);
+
+    await waitFor(() => {
+      expect(screen.getByText('New comment')).toBeInTheDocument();
+      expect(screen.getByText(/comments \(2\)/i)).toBeInTheDocument();
+    });
+  });
+
+  it('handles comment creation error gracefully', async () => {
+    const error = new Error('Failed to comment');
+    (api.createComment as Mock).mockRejectedValue(error);
+    const user = userEvent.setup()
+    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+
+    renderComponent()
+
+    const textarea = await screen.findByRole('textbox');
+    await user.type(textarea, 'Will fail');
+
+    const button = screen.getByRole('button', { name: /comment/i });
+    await user.click(button);
+
+    await waitFor(() => {
+      expect(consoleErrorSpy).toHaveBeenCalledWith('Error adding comment:', error);
+    });
+
+    consoleErrorSpy.mockRestore();
+  });
+
+  it('deletes a comment', async () => {
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+    (api.fetchComments as Mock).mockResolvedValue([
+      ...mockComments,
+      {
+        id: 2,
+        name: 'Commenter',
+        email: 'jane@example.com',
+        body: 'Well said',
+        postId: '1'
+      }
+    ]);
+    const user = userEvent.setup();
+    await renderComponent()
+
+
+    expect(await screen.findByText('Test Post')).toBeInTheDocument();
+    await user.click(screen.getByTestId(`${mockComments[0].id}-deleteBtn`))
+    
+    expect(screen.queryByText(mockComments[0].body)).not.toBeInTheDocument();
+
   });
 });
