@@ -63,16 +63,25 @@ export async function fetchUser(id: number): Promise<User> {
 }
 
 export async function createComment(postId: number, comment: Partial<Comment>): Promise<Comment> {
+  const headers: HeadersInit = {
+    'Content-type': 'application/json; charset=UTF-8',
+  };
+
+  const authHeaders = getAuthHeaders(); // assume it returns { Authorization?: string }
+
+  if (authHeaders?.Authorization) {
+    headers['Authorization'] = authHeaders.Authorization;
+  }
+
   const response = await fetch(`${API_BASE_URL}/comments`, {
     method: 'POST',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-      ...getAuthHeaders()
-    },
+    headers,
     body: JSON.stringify({
       postId,
       ...comment,
     }),
   });
+
   return response.json();
 }
+
