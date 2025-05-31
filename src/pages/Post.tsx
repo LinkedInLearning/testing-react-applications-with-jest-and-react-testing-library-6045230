@@ -113,6 +113,18 @@ const CommentsList = styled.div`
   gap: 1.5rem;
 `;
 
+const fetchWithRetry = async (fn: () => Promise<any>, retries = 3, delay = 200): Promise<any> => {
+  for (let i = 0; i < retries; i++) {
+    try {
+      console.log({i})
+      return await fn();
+    } catch (err) {
+      if (i === retries - 1) throw err;
+      await new Promise(res => setTimeout(res, delay));
+    }
+  }
+};
+
 export function Post() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -137,11 +149,11 @@ export function Post() {
 
         const [authorData, commentsData] = await Promise.all([
           fetchUser(postData.userId),
-          fetchComments(postData.id)
+          fetchWithRetry(() => fetchComments(postData.id), 3),
         ]);
        
         setAuthor(authorData);
-        setComments(commentsData.reverse()); // Show newest comments first
+        setComments(commentsData.reverse()); // Show newest comments first      
       } catch (error) {
         console.error('Error fetching post:', error);
         navigate('/');
@@ -197,7 +209,7 @@ export function Post() {
   if (!post || !author) {
     return <div className="text-center py-8">Post not found</div>;
   }
-
+  
   return (
     <Container>
       <Article>

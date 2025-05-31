@@ -66,7 +66,7 @@ describe('<Post />', () => {
     vi.clearAllMocks();
 
   });
-  
+
   const renderComponent = () => {
     return (
       render(
@@ -191,8 +191,142 @@ describe('<Post />', () => {
 
     expect(await screen.findByText('Test Post')).toBeInTheDocument();
     await user.click(screen.getByTestId(`${mockComments[0].id}-deleteBtn`))
-    
+
     expect(screen.queryByText(mockComments[0].body)).not.toBeInTheDocument();
 
+  });
+
+  it('updates comment content when edited', async () => {
+    const updatedText = 'Update comment';
+    (api.createComment as Mock).mockResolvedValue({
+      ...mockComments[0],
+      body: updatedText,
+    });
+    const user = userEvent.setup();
+    await renderComponent()
+
+
+    expect(await screen.findByText('Test Post')).toBeInTheDocument();
+    await user.click(screen.getByTestId(`${mockComments[0].id}-editBtn`))
+
+    const textarea = await screen.getByTestId('editInput');
+    await user.clear(textarea);
+    await user.type(textarea, updatedText);
+
+    const button = screen.getByRole('button', { name: /save changes/i });
+    await user.click(button);
+
+    await waitFor(() => {
+      expect(screen.getByText(updatedText)).toBeInTheDocument();
+      expect(screen.getByText(/comments \(1\)/i)).toBeInTheDocument();
+    });
+  });
+
+  it('handles rapid comment edits correctly', async () => {
+    // Create mock with delayed resolution
+    let resolveFirstEdit!: (value: any) => void;
+    let resolveSecondEdit!: (value: any) => void;
+
+    const firstEditPromise = new Promise(resolve => {
+      resolveFirstEdit = resolve;
+    });
+
+    const secondEditPromise = new Promise(resolve => {
+      resolveSecondEdit = resolve;
+    });
+
+    // First edit will resolve after second edit
+    (api.createComment as Mock)
+      .mockImplementationOnce(() => firstEditPromise)
+      .mockImplementationOnce(() => secondEditPromise);
+
+    const user = userEvent.setup();
+    await renderComponent();
+
+
+    expect(await screen.findByText('Test Post')).toBeInTheDocument();
+    // Start first edit
+    await user.click(screen.getByTestId(`${mockComments[0].id}-editBtn`));
+    const textarea = await screen.getByTestId('editInput');
+    await user.clear(textarea);
+    await user.type(textarea, 'First edit');
+    await user.click(screen.getByRole('button', { name: /save changes/i }));
+
+    // Start second edit before first completes
+    await user.click(screen.getByTestId(`${mockComments[0].id}-editBtn`));
+    const textareaAgain = await screen.getByTestId('editInput');
+    await user.clear(textareaAgain);
+    await user.type(textareaAgain, 'Second edit');
+    await user.click(screen.getByRole('button', { name: /save changes/i }));
+
+    // Resolve second edit first
+    resolveSecondEdit({
+      ...mockComments[0],
+      body: 'Second edit'
+    });
+
+    // Then resolve first edit
+    resolveFirstEdit({
+      ...mockComments[0],
+      body: 'First edit'
+    });
+
+    // Final state should show the second edit
+    await waitFor(() => {
+      expect(screen.getByText('Second edit')).toBeInTheDocument();
+      expect(screen.queryByText('First edit')).not.toBeInTheDocument();
+    });
+  });
+
+  it('cancels pending requests when unmounting', async () => {
+    // Create a mock that never resolves during the test
+    const neverResolvingPromise = new Promise(() => { });
+    (api.fetchComments as Mock).mockReturnValue(neverResolvingPromise);
+
+    // Mock console.error to catch "Can't perform a React state update on an unmounted component" warnings
+    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+
+    const { unmount } = render(
+      <MemoryRouter initialEntries={['/posts/1']}>
+        <Routes>
+          <Route path="/posts/:id" element={<Post />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    // Wait for component to start rendering
+    await screen.findByText(/loading/i);
+
+    // Unmount component while request is still pending
+    unmount();
+
+    // Verify no console errors about updating unmounted components
+    expect(consoleErrorSpy).not.toHaveBeenCalled();
+
+    consoleErrorSpy.mockRestore();
+  });
+
+  it('retries failed comment fetch up to 3 times', async () => {
+    const error = new Error('Network error');
+
+    // Fail twice, succeed on third try
+    (api.fetchComments as Mock)
+      .mockRejectedValueOnce(error)
+      .mockRejectedValueOnce(error)
+      .mockResolvedValueOnce([{
+        ...mockComments[0],
+        body: 'Comment after retry',
+      }]);
+
+    renderComponent();
+
+    // Initially shows loading
+    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+
+    // Eventually shows the comment that succeeded after retries
+    expect(await screen.findByText(/comment after retry/i)).toBeInTheDocument();
+
+    // Verify fetchComments was called exactly 3 times
+    await waitFor(() => expect(api.fetchComments).toHaveBeenCalledTimes(3))
   });
 });
