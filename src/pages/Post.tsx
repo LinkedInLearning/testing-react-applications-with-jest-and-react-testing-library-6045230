@@ -113,29 +113,6 @@ const CommentsList = styled.div`
   gap: 1.5rem;
 `;
 
-const LoginPrompt = styled.div`
-  text-align: center;
-  padding: 2rem;
-  background: #f3f4f6;
-  border-radius: 1rem;
-  margin-bottom: 2rem;
-
-  p {
-    color: #4b5563;
-    margin-bottom: 1rem;
-  }
-
-  a {
-    color: #2563eb;
-    text-decoration: none;
-    font-weight: 500;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
 export function Post() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -157,12 +134,12 @@ export function Post() {
       try {
         const postData = await fetchPost(parseInt(id));
         setPost(postData);
-        
+
         const [authorData, commentsData] = await Promise.all([
           fetchUser(postData.userId),
           fetchComments(postData.id)
         ]);
-        
+       
         setAuthor(authorData);
         setComments(commentsData.reverse()); // Show newest comments first
       } catch (error) {
@@ -242,7 +219,7 @@ export function Post() {
               </span>
             </AuthorInfo>
             <PostStats>
-              <StatButton onClick={handleLike} isLiked={post.isLiked}>
+              <StatButton onClick={handleLike} isLiked={post.isLiked} data-testid={`likeButton-${post.id}`}>
                 <ThumbsUp size={20} />
                 <span>{post.likesCount}</span>
               </StatButton>
@@ -262,15 +239,7 @@ export function Post() {
 
       <CommentsSection>
         <CommentsHeader>Comments ({post.commentsCount})</CommentsHeader>
-        {user ? (
           <CommentForm onSubmit={handleComment} />
-        ) : (
-          <LoginPrompt>
-            <p>Please sign in to comment.</p>
-            <a href="/login">Sign In</a>
-          </LoginPrompt>
-        )}
-
         <CommentsList>
           {comments.map((comment) => (
             <Comment

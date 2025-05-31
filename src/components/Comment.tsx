@@ -100,6 +100,7 @@ export function Comment({ comment, onEdit, onDelete, canModify }: CommentProps) 
           onSubmit={handleEdit}
           initialValue={comment.body}
           submitLabel="Save Changes"
+          inputTestId= "editInput"
         />
       </CommentContainer>
     );
@@ -117,10 +118,10 @@ export function Comment({ comment, onEdit, onDelete, canModify }: CommentProps) 
         </CommentAuthor>
         {canModify && (
           <CommentActions>
-            <ActionButton onClick={() => setIsEditing(true)} title="Edit">
+            <ActionButton onClick={() => setIsEditing(true)} title="Edit" data-testid={`${comment.id}-editBtn`}>
               <Pencil size={18} />
             </ActionButton>
-            <ActionButton onClick={handleDelete} title="Delete">
+            <ActionButton onClick={handleDelete} title="Delete" data-testid={`${comment.id}-deleteBtn`}>
               <Trash2 size={18} />
             </ActionButton>
           </CommentActions>

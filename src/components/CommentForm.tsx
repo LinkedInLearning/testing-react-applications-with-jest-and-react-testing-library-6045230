@@ -65,12 +65,14 @@ interface CommentFormProps {
   onSubmit: (data: CommentFormData) => Promise<void>;
   initialValue?: string;
   submitLabel?: string;
+  inputTestId?: string
 }
 
 export function CommentForm({
   onSubmit,
   initialValue = '',
   submitLabel = 'Post Comment',
+  inputTestId = 'createInput'
 }: CommentFormProps) {
   const {
     register,
@@ -96,6 +98,7 @@ export function CommentForm({
       <TextArea
         {...register('content')}
         placeholder="Write your comment..."
+        data-testid={inputTestId}
       />
       {errors.content && (
         <ErrorMessage>{errors.content.message}</ErrorMessage>
