@@ -116,7 +116,6 @@ const CommentsList = styled.div`
 const fetchWithRetry = async (fn: () => Promise<any>, retries = 3, delay = 200): Promise<any> => {
   for (let i = 0; i < retries; i++) {
     try {
-      console.log({i})
       return await fn();
     } catch (err) {
       if (i === retries - 1) throw err;
