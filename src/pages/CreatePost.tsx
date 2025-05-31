@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import styled from 'styled-components';
 import { useAuth } from '../contexts/AuthContext';
+import { createPost } from '../services/post';
 
 const postSchema = z.object({
   title: z.string().min(1, 'Title is required').max(100, 'Title is too long'),
@@ -111,22 +112,11 @@ export function CreatePost() {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('Not authenticated');
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/products`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          title: data.title,
-          description: data.content,
-          price: 0,
-          categoryId: 1,
-          images: [`https://picsum.photos/seed/${Date.now()}/800/400`]
-        }),
-      });
-
-      if (!response.ok) throw new Error('Failed to create post');
+      await createPost({
+      title: data.title,
+      description: data.content,
+      token
+    });
       navigate('/');
     } catch (error) {
       console.error('Error creating post:', error);
@@ -137,7 +127,7 @@ export function CreatePost() {
     navigate('/login');
     return null;
   }
-
+  
   return (
     <Container>
       <Title>Create New Post</Title>
