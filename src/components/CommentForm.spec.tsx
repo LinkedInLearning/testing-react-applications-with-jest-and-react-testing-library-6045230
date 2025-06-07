@@ -59,7 +59,8 @@ describe('CommentForm', () => {
     await user.type(textarea, 'a'.repeat(256));
 
     const submitButton = screen.getByRole('button', { name: /Post Comment/i });
-    await user.click(submitButton);
+    
+    expect(submitButton).not.toBeDisabled()
     
     expect(screen.getByText('256/255')).toBeInTheDocument();
     expect(screen.queryByText(/Comment cannot exceed 255 words/i)).toBeInTheDocument();

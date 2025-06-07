@@ -57,38 +57,6 @@ interface CommentFormProps {
   inputTestId?: string
 }
 
-
-// export function CommentForm({
-//   onSubmit,
-// }: CommentFormProps) {
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//   } = useForm<CommentFormData>({
-//     resolver: zodResolver(commentSchema),
-//   });
-
-//   const handleFormSubmit = async (data: CommentFormData) => {
-//     await onSubmit(data);
-//   };
-
-//   return (
-//     <Form onSubmit={handleSubmit(handleFormSubmit)}>
-//       <TextArea
-//         {...register('content')}
-//         placeholder="Write your comment..."
-//       />
-//       {errors.content && (
-//         <ErrorMessage>{errors.content.message}</ErrorMessage>
-//       )}
-//       <SubmitButton type="submit">
-//         Post Comment
-//       </SubmitButton>
-//     </Form>
-//   );
-// }
-
 const commentSchema = z.object({
   content: z
     .string()
@@ -141,9 +109,10 @@ export function CommentForm({
       {errors.content && (
         <ErrorMessage>{errors.content.message}</ErrorMessage>
       )}
-      <SubmitButton type="submit" disabled={isSubmitting || charCount > 255}>
+      <SubmitButton type="submit">
         {isSubmitting ? 'Submitting...' : submitLabel}
       </SubmitButton>
     </Form>
   );
 }
+
