@@ -100,10 +100,10 @@ export function Home() {
 
   const handleLike = async (postId: number, e: React.MouseEvent) => {
     e.preventDefault();
-    const isLiked = toggleLike(postId);
+    const isliked = toggleLike(postId);
     setPosts(posts.map(post => 
       post.id === postId 
-        ? { ...post, isLiked, likesCount: isLiked ? 1 : 0 }
+        ? { ...post, isliked, likesCount: isliked ? 1 : 0 }
         : post
     ));
   };

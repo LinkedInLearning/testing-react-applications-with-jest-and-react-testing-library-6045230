@@ -11,7 +11,7 @@ const mockPost = {
   body: 'A'.repeat(250),
   likesCount: 5,
   commentsCount: 3,
-  isLiked: false,
+  isliked: false,
 };
 
 describe('PostCard component', () => {
@@ -69,7 +69,7 @@ describe('PostCard component', () => {
   it('applies correct styles when not liked', () => {
     render(
       <MemoryRouter>
-        <PostCard post={{ ...mockPost, isLiked: false }} authorName="Jane Doe" onLike={vi.fn()} />
+        <PostCard post={{ ...mockPost, isliked: false }} authorName="Jane Doe" onLike={vi.fn()} />
       </MemoryRouter>
     );
 
@@ -82,7 +82,7 @@ describe('PostCard component', () => {
   it('applies correct styles when liked', () => {
     render(
       <MemoryRouter>
-        <PostCard post={{ ...mockPost, isLiked: true }} authorName="Jane Doe" onLike={vi.fn()} />
+        <PostCard post={{ ...mockPost, isliked: true }} authorName="Jane Doe" onLike={vi.fn()} />
       </MemoryRouter>
     );
 

@@ -67,6 +67,88 @@ interface CommentFormProps {
   inputTestId?: string
 }
 
+// step 2
+/* export function CommentForm() {
+  return (
+    <Form>
+      <TextArea
+        placeholder="Write your comment..."
+      />    
+      <SubmitButton type="submit">
+        Post Comment
+      </SubmitButton>
+    </Form>
+  );
+}
+ */
+
+// step 3
+/* export function CommentForm({
+  onSubmit,
+}: CommentFormProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CommentFormData>({
+    resolver: zodResolver(commentSchema),
+  });
+
+  const handleFormSubmit = async () => {
+
+  };
+
+  return (
+    <Form onSubmit={handleSubmit(handleFormSubmit)}>
+      <TextArea
+        {...register('content')}
+        placeholder="Write your comment..."
+      />
+      {errors.content && (
+        <ErrorMessage>{errors.content.message}</ErrorMessage>
+      )}
+      <SubmitButton type="submit">
+        Post Comment
+      </SubmitButton>
+    </Form>
+  );
+} */
+
+// step 4
+/* export function CommentForm({
+  onSubmit,
+}: CommentFormProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CommentFormData>({
+    resolver: zodResolver(commentSchema),
+  });
+
+  const handleFormSubmit = async (data: CommentFormData) => {
+    await onSubmit(data);
+  };
+
+  return (
+    <Form onSubmit={handleSubmit(handleFormSubmit)}>
+      <TextArea
+        {...register('content')}
+        placeholder="Write your comment..."
+      />
+      {errors.content && (
+        <ErrorMessage>{errors.content.message}</ErrorMessage>
+      )}
+      <SubmitButton type="submit">
+        Post Comment
+      </SubmitButton>
+    </Form>
+  );
+} */
+
+
+
+
 export function CommentForm({
   onSubmit,
   initialValue = '',

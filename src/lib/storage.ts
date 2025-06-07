@@ -16,16 +16,16 @@ export function setStorageData(data: LocalStorage): void {
 
 export function toggleLike(postId: number): boolean {
   const data = getStorageData();
-  const isLiked = data.likes.includes(postId);
+  const isliked = data.likes.includes(postId);
   
-  if (isLiked) {
+  if (isliked) {
     data.likes = data.likes.filter(id => id !== postId);
   } else {
     data.likes.push(postId);
   }
   
   setStorageData(data);
-  return !isLiked;
+  return !isliked;
 }
 
 export function isPostLiked(postId: number): boolean {

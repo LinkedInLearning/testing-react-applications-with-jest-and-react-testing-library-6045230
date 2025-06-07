@@ -1,0 +1,308 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Post /> > should match snapshot when fully loaded 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-cRHGzb hVXCSc"
+  >
+    <article
+      class="sc-jOTjWM hQGDsi"
+    >
+      <img
+        alt="Test Post"
+        class="sc-cOPLXt GHRBo"
+        src="https://picsum.photos/seed/1/1200/600"
+      />
+      <div
+        class="sc-jXuTBK bbmEcz"
+      >
+        <h1
+          class="sc-cXrvCr eZardT"
+        >
+          Test Post
+        </h1>
+        <div
+          class="sc-jUCZac jREzfA"
+        >
+          <div
+            class="sc-cUzBaJ GobPe"
+          >
+            <span>
+              <svg
+                class="lucide lucide-user "
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"
+                />
+                <circle
+                  cx="12"
+                  cy="7"
+                  r="4"
+                />
+              </svg>
+              Jane Doe
+            </span>
+            <span>
+              <svg
+                class="lucide lucide-calendar "
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 2v4"
+                />
+                <path
+                  d="M16 2v4"
+                />
+                <rect
+                  height="18"
+                  rx="2"
+                  width="18"
+                  x="3"
+                  y="4"
+                />
+                <path
+                  d="M3 10h18"
+                />
+              </svg>
+              5/3/2025
+            </span>
+          </div>
+          <div
+            class="sc-lnQFQe ilKtLK"
+          >
+            <button
+              class="sc-enNhQL dQDrps"
+              data-testid="likeButton-1"
+            >
+              <svg
+                class="lucide lucide-thumbs-up "
+                fill="none"
+                height="20"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7 10v12"
+                />
+                <path
+                  d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"
+                />
+              </svg>
+              <span>
+                0
+              </span>
+            </button>
+            <div
+              class="sc-enNhQL dQDrps"
+            >
+              <svg
+                class="lucide lucide-message-square "
+                fill="none"
+                height="20"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                />
+              </svg>
+              <span>
+                1
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-dUwGTt kLOsqR"
+        >
+          <p>
+            This is a test post.
+          </p>
+          <p>
+            Second paragraph.
+          </p>
+        </div>
+      </div>
+    </article>
+    <div
+      class="sc-eUzcTs cCNSRk"
+    >
+      <h2
+        class="sc-gKcHA-D iCzahW"
+      >
+        Comments (1)
+      </h2>
+      <form
+        class="sc-VHjGu fXXijF"
+      >
+        <textarea
+          class="sc-gnOvAp ioKTKF"
+          data-testid="createInput"
+          name="content"
+          placeholder="Write your comment..."
+        />
+        <button
+          class="sc-glJfXD hiMLPh"
+          type="submit"
+        >
+          Post Comment
+        </button>
+      </form>
+      <div
+        class="sc-hKfdAC lgSTfe"
+      >
+        <div
+          class="sc-dOfePm czXTTb"
+        >
+          <div
+            class="sc-jgmqJh katOQV"
+          >
+            <div
+              class="sc-gIIpAQ icdtER"
+            >
+              <h4>
+                Commenter
+              </h4>
+              <p>
+                <svg
+                  class="lucide lucide-clock "
+                  fill="none"
+                  height="14"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="14"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                  />
+                  <polyline
+                    points="12 6 12 12 16 14"
+                  />
+                </svg>
+                5/3/2025
+              </p>
+            </div>
+            <div
+              class="sc-kFkjun SGQqy"
+            >
+              <button
+                class="sc-ihGilW dltwXA"
+                data-testid="1-editBtn"
+                title="Edit"
+              >
+                <svg
+                  class="lucide lucide-pencil "
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                  />
+                  <path
+                    d="m15 5 4 4"
+                  />
+                </svg>
+              </button>
+              <button
+                class="sc-ihGilW dltwXA"
+                data-testid="1-deleteBtn"
+                title="Delete"
+              >
+                <svg
+                  class="lucide lucide-trash2 "
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3 6h18"
+                  />
+                  <path
+                    d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                  />
+                  <path
+                    d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+                  />
+                  <line
+                    x1="10"
+                    x2="10"
+                    y1="11"
+                    y2="17"
+                  />
+                  <line
+                    x1="14"
+                    x2="14"
+                    y1="11"
+                    y2="17"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <p
+            class="sc-jRLeyu dRNHGZ"
+          >
+            Nice post!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Post /> > should match snapshot when post is not found 1`] = `
+<DocumentFragment>
+  <div
+    class="text-center py-8"
+  >
+    Post not found
+  </div>
+</DocumentFragment>
+`;

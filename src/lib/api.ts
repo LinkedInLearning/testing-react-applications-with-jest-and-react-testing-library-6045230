@@ -25,7 +25,7 @@ export async function fetchPosts(query?: string): Promise<PostWithCounts[]> {
     ...post,
     commentsCount: commentCounts[post.id] || 0,
     likesCount: likes.includes(post.id) ? 1 : 0,
-    isLiked: likes.includes(post.id)
+    isliked: likes.includes(post.id)
   }));
   
   if (query) {
@@ -48,7 +48,7 @@ export async function fetchPost(id: number): Promise<PostWithCounts> {
     ...post,
     commentsCount: comments.length,
     likesCount: isPostLiked(post.id) ? 1 : 0,
-    isLiked: isPostLiked(post.id)
+    isliked: isPostLiked(post.id)
   };
 }
 

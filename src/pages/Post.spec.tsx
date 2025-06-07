@@ -32,7 +32,7 @@ const mockPost = {
   userId: 1,
   commentsCount: 1,
   likesCount: 0,
-  isLiked: false,
+  isliked: false,
 };
 
 const mockUser = {
@@ -78,6 +78,29 @@ describe('<Post />', () => {
       )
     )
   }
+
+  it('should match snapshot when fully loaded', async () => {
+    const { asFragment, findByText } = renderComponent();
+    
+    // Wait for the component to fully load
+    await findByText('Test Post');
+    
+    // Take a snapshot of the fully rendered component
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should match snapshot when post is not found', async () => {
+    // Mock post not found
+    (api.fetchPost as Mock).mockResolvedValue(null);
+    
+    const { asFragment, findByText } = renderComponent();
+    
+    // Wait for the not found message to appear
+    await findByText('Post not found');
+    
+    // Take a snapshot of the not found state
+    expect(asFragment()).toMatchSnapshot();
+  });
 
   it('renders loading state', async () => {
     renderComponent()

@@ -78,12 +78,12 @@ const PostStats = styled.div`
   gap: 1rem;
 `;
 
-const StatButton = styled.button<{ isLiked?: boolean }>`
+const StatButton = styled.button<{ isliked?: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: ${props => props.isLiked ? '#2563eb' : '#6b7280'};
-  background: ${props => props.isLiked ? '#eff6ff' : 'transparent'};
+  color: ${props => props.isliked ? '#2563eb' : '#6b7280'};
+  background: ${props => props.isliked ? '#eff6ff' : 'transparent'};
   border: none;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
@@ -92,7 +92,7 @@ const StatButton = styled.button<{ isLiked?: boolean }>`
   transition: all 0.2s;
 
   &:hover {
-    background: ${props => props.isLiked ? '#dbeafe' : '#f3f4f6'};
+    background: ${props => props.isliked ? '#dbeafe' : '#f3f4f6'};
     transform: translateY(-1px);
   }
 
@@ -139,7 +139,7 @@ export function PostCard({ post, authorName, onLike }: PostCardProps) {
             <PostStats>
               <StatButton
                 onClick={(e) => onLike(post.id, e)}
-                isLiked={post.isLiked}
+                isliked={post.isliked}
               >
                 <ThumbsUp size={16} />
                 <span>{post.likesCount}</span>

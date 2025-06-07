@@ -23,7 +23,7 @@ export interface User {
 export interface PostWithCounts extends Post {
   commentsCount: number;
   likesCount: number;
-  isLiked: boolean;
+  isliked: boolean;
 }
 
 export interface LocalStorage {

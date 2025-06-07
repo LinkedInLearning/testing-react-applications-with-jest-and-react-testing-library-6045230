@@ -69,11 +69,11 @@ const PostStats = styled.div`
   gap: 1.5rem;
 `;
 
-const StatButton = styled.button<{ isLiked?: boolean }>`
+const StatButton = styled.button<{ isliked?: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: ${props => props.isLiked ? '#2563eb' : '#6b7280'};
+  color: ${props => props.isliked ? '#2563eb' : '#6b7280'};
   background: none;
   border: none;
   cursor: pointer;
@@ -147,8 +147,8 @@ export function Post() {
         setPost(postData);
 
         const [authorData, commentsData] = await Promise.all([
-          fetchUser(postData.userId),
-          fetchWithRetry(() => fetchComments(postData.id), 3),
+          fetchUser(postData?.userId),
+          fetchWithRetry(() => fetchComments(postData?.id), 3),
         ]);
        
         setAuthor(authorData);
@@ -197,8 +197,8 @@ export function Post() {
   const handleLike = () => {
     if (!post) return;
     
-    const isLiked = toggleLike(post.id);
-    setPost({ ...post, isLiked, likesCount: isLiked ? 1 : 0 });
+    const isliked = toggleLike(post.id);
+    setPost({ ...post, isliked, likesCount: isliked ? 1 : 0 });
   };
 
   if (loading) {
@@ -230,7 +230,7 @@ export function Post() {
               </span>
             </AuthorInfo>
             <PostStats>
-              <StatButton onClick={handleLike} isLiked={post.isLiked} data-testid={`likeButton-${post.id}`}>
+              <StatButton onClick={handleLike} isliked={post.isliked} data-testid={`likeButton-${post.id}`}>
                 <ThumbsUp size={20} />
                 <span>{post.likesCount}</span>
               </StatButton>
