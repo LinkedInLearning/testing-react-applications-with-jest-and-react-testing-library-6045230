@@ -57,38 +57,7 @@ interface CommentFormProps {
   inputTestId?: string
 }
 
-
-// export function CommentForm({
-//   onSubmit,
-// }: CommentFormProps) {
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//   } = useForm<CommentFormData>({
-//     resolver: zodResolver(commentSchema),
-//   });
-
-//   const handleFormSubmit = async (data: CommentFormData) => {
-//     await onSubmit(data);
-//   };
-
-//   return (
-//     <Form onSubmit={handleSubmit(handleFormSubmit)}>
-//       <TextArea
-//         {...register('content')}
-//         placeholder="Write your comment..."
-//       />
-//       {errors.content && (
-//         <ErrorMessage>{errors.content.message}</ErrorMessage>
-//       )}
-//       <SubmitButton type="submit">
-//         Post Comment
-//       </SubmitButton>
-//     </Form>
-//   );
-// }
-
+const MAX_LENGTH = 255;
 const commentSchema = z.object({
   content: z
     .string()
@@ -116,10 +85,10 @@ export function CommentForm({
     defaultValues: {
       content: initialValue,
     },
-    mode: 'onChange', // 👈 Validate on every change
+    // mode: 'onChange', // 👈 Validate on every change
   });
 
-  // 2. Watch the 'content' field to get its current value
+  // Watch the 'content' field to get its current value
   const contentValue = watch("content");
   const charCount = contentValue?.length || 0;
 
