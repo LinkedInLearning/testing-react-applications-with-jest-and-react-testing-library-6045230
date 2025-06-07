@@ -16,10 +16,13 @@ import.meta.env.VITE_API_URL = mockURL;
 describe('createPost', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.spyOn(Date, 'now').mockReturnValue(1749289069860); // Use a fixed timestamp
+
   });
 
   afterAll(() => {
     import.meta.env.VITE_API_URL = originalEnv;
+    vi.restoreAllMocks();
   })
   const token = 'fake-token';
   const params = {

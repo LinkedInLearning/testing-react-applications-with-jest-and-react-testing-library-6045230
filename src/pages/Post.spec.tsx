@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach, Mock } from 'vitest';
+import { describe, it, expect, vi, beforeEach, Mock, afterAll } from 'vitest';
 
 import { Post } from './Post';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
@@ -64,8 +64,12 @@ describe('<Post />', () => {
   beforeEach(() => {
     setup()
     vi.clearAllMocks();
+    vi.spyOn(Date, 'now').mockReturnValue(1749289069860); // Set a fixed timestamp
 
   });
+  afterAll(() => {
+    vi.restoreAllMocks();
+  })
 
   const renderComponent = () => {
     return (
