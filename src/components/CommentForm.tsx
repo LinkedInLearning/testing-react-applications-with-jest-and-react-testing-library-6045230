@@ -3,18 +3,6 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import styled from 'styled-components';
 
-const commentSchema = z.object({
-  content: z
-    .string()
-    .min(1, 'Comment cannot be empty')
-    .max(255, 'Comment cannot exceed 255 words')
-    .refine((value) => value.trim().split(/\s+/).length <= 255, {
-      message: 'Comment cannot exceed 255 words',
-    }),
-});
-
-type CommentFormData = z.infer<typeof commentSchema>;
-
 const Form = styled.form`
   margin-bottom: 1.5rem;
 `;
@@ -59,6 +47,22 @@ const SubmitButton = styled.button`
     cursor: not-allowed;
   }
 `;
+
+// Validation constraints
+const MAX_LENGTH = 255
+
+// Schema definition
+const commentSchema = z.object({
+  content: z
+    .string()
+    .min(1, 'Comment cannot be empty')
+    .max(MAX_LENGTH, `Comment cannot exceed ${MAX_LENGTH} words`)
+    .refine((value) => value.trim().split(/\s+/).length <= MAX_LENGTH, {
+      message: `Comment cannot exceed ${MAX_LENGTH} words`,
+    }),
+});
+
+type CommentFormData = z.infer<typeof commentSchema>;
 
 interface CommentFormProps {
   onSubmit: (data: CommentFormData) => Promise<void>;
@@ -158,6 +162,7 @@ export function CommentForm({
   const {
     register,
     handleSubmit,
+    watch, // 👈 Track input value in real-time
     formState: { errors, isSubmitting },
     reset,
   } = useForm<CommentFormData>({
@@ -165,7 +170,12 @@ export function CommentForm({
     defaultValues: {
       content: initialValue,
     },
+    mode: 'onChange', // 👈 Validate on every change
   });
+
+  // 2. Watch the 'content' field to get its current value
+  const contentValue = watch("content");
+  const charCount = contentValue?.length || 0;
 
   const handleFormSubmit = async (data: CommentFormData) => {
     await onSubmit(data);
@@ -181,10 +191,11 @@ export function CommentForm({
         placeholder="Write your comment..."
         data-testid={inputTestId}
       />
+      <span className="character-count">{charCount}/{MAX_LENGTH}</span>
       {errors.content && (
         <ErrorMessage>{errors.content.message}</ErrorMessage>
       )}
-      <SubmitButton type="submit" disabled={isSubmitting}>
+      <SubmitButton type="submit" disabled={isSubmitting || charCount > MAX_LENGTH}>
         {isSubmitting ? 'Submitting...' : submitLabel}
       </SubmitButton>
     </Form>
