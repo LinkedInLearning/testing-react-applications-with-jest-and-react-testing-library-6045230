@@ -60,15 +60,7 @@ const SubmitButton = styled.button`
   }
 `;
 
-interface CommentFormProps {
-  onSubmit: (data: CommentFormData) => Promise<void>;
-  initialValue?: string;
-  submitLabel?: string;
-  inputTestId?: string
-}
-
-// step 2
-/* export function CommentForm() {
+export function CommentForm() {
   return (
     <Form>
       <TextArea
@@ -80,113 +72,33 @@ interface CommentFormProps {
     </Form>
   );
 }
- */
+ 
+// export function CommentForm() {
+//   const {
+//     register,
+//     handleSubmit,
+//     formState: { errors },
+//   } = useForm<CommentFormData>({
+//     resolver: zodResolver(commentSchema),
+//   });
 
-// step 3
-/* export function CommentForm({
-  onSubmit,
-}: CommentFormProps) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<CommentFormData>({
-    resolver: zodResolver(commentSchema),
-  });
+//   const handleFormSubmit = async () => {
 
-  const handleFormSubmit = async () => {
+//   };
 
-  };
+//   return (
+//     <Form onSubmit={handleSubmit(handleFormSubmit)}>
+//       <TextArea
+//         {...register('content')}
+//         placeholder="Write your comment..."
+//       />
+//       {errors.content && (
+//         <ErrorMessage>{errors.content.message}</ErrorMessage>
+//       )}
+//       <SubmitButton type="submit">
+//         Post Comment
+//       </SubmitButton>
+//     </Form>
+//   );
+// } 
 
-  return (
-    <Form onSubmit={handleSubmit(handleFormSubmit)}>
-      <TextArea
-        {...register('content')}
-        placeholder="Write your comment..."
-      />
-      {errors.content && (
-        <ErrorMessage>{errors.content.message}</ErrorMessage>
-      )}
-      <SubmitButton type="submit">
-        Post Comment
-      </SubmitButton>
-    </Form>
-  );
-} */
-
-// step 4
-/* export function CommentForm({
-  onSubmit,
-}: CommentFormProps) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<CommentFormData>({
-    resolver: zodResolver(commentSchema),
-  });
-
-  const handleFormSubmit = async (data: CommentFormData) => {
-    await onSubmit(data);
-  };
-
-  return (
-    <Form onSubmit={handleSubmit(handleFormSubmit)}>
-      <TextArea
-        {...register('content')}
-        placeholder="Write your comment..."
-      />
-      {errors.content && (
-        <ErrorMessage>{errors.content.message}</ErrorMessage>
-      )}
-      <SubmitButton type="submit">
-        Post Comment
-      </SubmitButton>
-    </Form>
-  );
-} */
-
-
-
-
-export function CommentForm({
-  onSubmit,
-  initialValue = '',
-  submitLabel = 'Post Comment',
-  inputTestId = 'createInput'
-}: CommentFormProps) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm<CommentFormData>({
-    resolver: zodResolver(commentSchema),
-    defaultValues: {
-      content: initialValue,
-    },
-  });
-
-  const handleFormSubmit = async (data: CommentFormData) => {
-    await onSubmit(data);
-    if (!initialValue) {
-      reset();
-    }
-  };
-
-  return (
-    <Form onSubmit={handleSubmit(handleFormSubmit)}>
-      <TextArea
-        {...register('content')}
-        placeholder="Write your comment..."
-        data-testid={inputTestId}
-      />
-      {errors.content && (
-        <ErrorMessage>{errors.content.message}</ErrorMessage>
-      )}
-      <SubmitButton type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Submitting...' : submitLabel}
-      </SubmitButton>
-    </Form>
-  );
-}
