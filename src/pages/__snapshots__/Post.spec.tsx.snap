@@ -3,29 +3,29 @@
 exports[`<Post /> > should match snapshot when fully loaded 1`] = `
 <DocumentFragment>
   <div
-    class="sc-cRHGzb hVXCSc"
+    class="sc-jOTjWM eiMBZP"
   >
     <article
-      class="sc-jOTjWM hQGDsi"
+      class="sc-cOPLXt cRZoqD"
     >
       <img
         alt="Test Post"
-        class="sc-cOPLXt GHRBo"
+        class="sc-jXuTBK cCalCC"
         src="https://picsum.photos/seed/1/1200/600"
       />
       <div
-        class="sc-jXuTBK bbmEcz"
+        class="sc-cXrvCr eyVlLH"
       >
         <h1
-          class="sc-cXrvCr eZardT"
+          class="sc-jUCZac cOtMed"
         >
           Test Post
         </h1>
         <div
-          class="sc-jUCZac jREzfA"
+          class="sc-cUzBaJ ggMFiF"
         >
           <div
-            class="sc-cUzBaJ GobPe"
+            class="sc-lnQFQe jtGYqm"
           >
             <span>
               <svg
@@ -81,14 +81,14 @@ exports[`<Post /> > should match snapshot when fully loaded 1`] = `
                   d="M3 10h18"
                 />
               </svg>
-              5/3/2025
+              5/29/2025
             </span>
           </div>
           <div
-            class="sc-lnQFQe ilKtLK"
+            class="sc-enNhQL iBsSEr"
           >
             <button
-              class="sc-enNhQL dQDrps"
+              class="sc-dUwGTt gYgxZt"
               data-testid="likeButton-1"
             >
               <svg
@@ -115,7 +115,7 @@ exports[`<Post /> > should match snapshot when fully loaded 1`] = `
               </span>
             </button>
             <div
-              class="sc-enNhQL dQDrps"
+              class="sc-dUwGTt gYgxZt"
             >
               <svg
                 class="lucide lucide-message-square "
@@ -140,7 +140,7 @@ exports[`<Post /> > should match snapshot when fully loaded 1`] = `
           </div>
         </div>
         <div
-          class="sc-dUwGTt kLOsqR"
+          class="sc-eUzcTs fxPtJy"
         >
           <p>
             This is a test post.
@@ -152,10 +152,10 @@ exports[`<Post /> > should match snapshot when fully loaded 1`] = `
       </div>
     </article>
     <div
-      class="sc-eUzcTs cCNSRk"
+      class="sc-gKcHA-D ktCpVR"
     >
       <h2
-        class="sc-gKcHA-D iCzahW"
+        class="sc-hKfdAC gWpRmq"
       >
         Comments (1)
       </h2>
@@ -168,24 +168,33 @@ exports[`<Post /> > should match snapshot when fully loaded 1`] = `
           name="content"
           placeholder="Write your comment..."
         />
-        <button
-          class="sc-glJfXD hiMLPh"
-          type="submit"
+        <div
+          class="sc-dOfePm jQVoPr"
         >
-          Post Comment
-        </button>
+          <button
+            class="sc-glJfXD hiMLPh"
+            type="submit"
+          >
+            Post Comment
+          </button>
+          <span
+            class="character-count"
+          >
+            0/255
+          </span>
+        </div>
       </form>
       <div
-        class="sc-hKfdAC lgSTfe"
+        class="sc-eagvWJ kOmktx"
       >
         <div
-          class="sc-dOfePm czXTTb"
+          class="sc-jgmqJh iKFCqZ"
         >
           <div
-            class="sc-jgmqJh katOQV"
+            class="sc-gIIpAQ cNRaqd"
           >
             <div
-              class="sc-gIIpAQ icdtER"
+              class="sc-kFkjun gTBEgR"
             >
               <h4>
                 Commenter
@@ -212,14 +221,14 @@ exports[`<Post /> > should match snapshot when fully loaded 1`] = `
                     points="12 6 12 12 16 14"
                   />
                 </svg>
-                5/3/2025
+                5/29/2025
               </p>
             </div>
             <div
-              class="sc-kFkjun SGQqy"
+              class="sc-ihGilW jRKOnx"
             >
               <button
-                class="sc-ihGilW dltwXA"
+                class="sc-jRLeyu efyYbZ"
                 data-testid="1-editBtn"
                 title="Edit"
               >
@@ -244,7 +253,7 @@ exports[`<Post /> > should match snapshot when fully loaded 1`] = `
                 </svg>
               </button>
               <button
-                class="sc-ihGilW dltwXA"
+                class="sc-jRLeyu efyYbZ"
                 data-testid="1-deleteBtn"
                 title="Delete"
               >
@@ -286,7 +295,7 @@ exports[`<Post /> > should match snapshot when fully loaded 1`] = `
             </div>
           </div>
           <p
-            class="sc-jRLeyu dRNHGZ"
+            class="sc-cRHGzb llUKIq"
           >
             Nice post!
           </p>

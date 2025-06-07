@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ThumbsUp, MessageSquare, Calendar, User } from 'lucide-react';
 import styled from 'styled-components';
 import type { PostWithCounts } from '../types/blog';
+import FavoriteButton from './FavoriteButton';
 
 const Article = styled.article`
   background: white;
@@ -137,9 +138,11 @@ export function PostCard({ post, authorName, onLike }: PostCardProps) {
               </span>
             </PostAuthor>
             <PostStats>
+              <FavoriteButton post={post} />
               <StatButton
                 onClick={(e) => onLike(post.id, e)}
                 isliked={post.isliked}
+                data-testid='likeBtn'
               >
                 <ThumbsUp size={16} />
                 <span>{post.likesCount}</span>

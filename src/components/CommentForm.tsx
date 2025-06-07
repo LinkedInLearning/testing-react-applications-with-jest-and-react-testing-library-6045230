@@ -48,6 +48,12 @@ const SubmitButton = styled.button`
   }
 `;
 
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 // Validation constraints
 const MAX_LENGTH = 255
 
@@ -191,13 +197,17 @@ export function CommentForm({
         placeholder="Write your comment..."
         data-testid={inputTestId}
       />
-      <span className="character-count">{charCount}/{MAX_LENGTH}</span>
+      
       {errors.content && (
         <ErrorMessage>{errors.content.message}</ErrorMessage>
       )}
+      <FlexContainer>
       <SubmitButton type="submit" disabled={isSubmitting || charCount > MAX_LENGTH}>
         {isSubmitting ? 'Submitting...' : submitLabel}
       </SubmitButton>
+      <span className="character-count">{charCount}/{MAX_LENGTH}</span>
+      </FlexContainer>
+      
     </Form>
   );
 }
