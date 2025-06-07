@@ -107,7 +107,7 @@ describe.only('Home component', () => {
 
     await waitFor(async () => await screen.findByText('Test Post'));
 
-    const likeButton = screen.getByTestId('likeBtn'); // assuming PostCard renders a button for like
+    const likeButton = screen.getByRole('button'); // assuming PostCard renders a button for like
     await user.click(likeButton);
 
     expect(storage.toggleLike).toHaveBeenCalledWith(1);

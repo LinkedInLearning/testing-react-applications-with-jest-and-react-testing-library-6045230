@@ -42,7 +42,7 @@ describe('createPost', () => {
 
     const result = await createPost(params);
 
-    /* expect(fetch).toHaveBeenCalledWith(`${mockURL}/products`, {
+    expect(fetch).toHaveBeenCalledWith(`${mockURL}/products`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ describe('createPost', () => {
         categoryId: 1,
         images: [`https://picsum.photos/seed/${Date.now()}/800/400`]
       })),
-    }); */
+    });
 
     expect(result).toEqual(mockResponse);
   });
