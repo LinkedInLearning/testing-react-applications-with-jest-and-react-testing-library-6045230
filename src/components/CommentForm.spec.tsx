@@ -35,4 +35,33 @@ describe('CommentForm', () => {
     expect(mockSubmit).toHaveBeenCalledWith({content: 'This is my comment'});
     expect(screen.queryByText(/Comment cannot be empty/i)).not.toBeInTheDocument();
   }); 
+
+  it('displays character count as user types', async() => {
+    const user = userEvent.setup()
+    render(<CommentForm onSubmit={mockSubmit} />);
+    
+    const textarea = screen.getByPlaceholderText(/Write your comment.../i);
+    // Initially should show 0/255
+    expect(screen.getByText('0/255')).toBeInTheDocument();
+    await user.type(textarea, 'This is my comment');
+    
+    // Should now show 18/255
+    expect(screen.getByText('18/255')).toBeInTheDocument();
+  });
+  
+  it('shows error when comment exceeds maximum length', async() => {
+    const user = userEvent.setup()
+    render(<CommentForm onSubmit={mockSubmit} />);
+    
+    const textarea = screen.getByPlaceholderText(/Write your comment.../i);
+
+    expect(screen.getByText('0/255')).toBeInTheDocument();
+    await user.type(textarea, 'a'.repeat(256));
+
+    const submitButton = screen.getByRole('button', { name: /Post Comment/i });
+    await user.click(submitButton);
+    
+    expect(screen.getByText('256/255')).toBeInTheDocument();
+    expect(screen.queryByText(/Comment cannot exceed 255 words/i)).toBeInTheDocument();
+  }); 
 });
