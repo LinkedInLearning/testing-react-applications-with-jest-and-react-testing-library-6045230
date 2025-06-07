@@ -62,8 +62,8 @@ const commentSchema = z.object({
   content: z
     .string()
     .min(1, 'Comment cannot be empty')
-    .max(255, 'Comment cannot exceed 255 words')
-    .refine((value) => value.trim().split(/\s+/).length <= 255, {
+    .max(MAX_LENGTH, 'Comment cannot exceed 255 words')
+    .refine((value) => value.trim().split(/\s+/).length <= MAX_LENGTH, {
       message: 'Comment cannot exceed 255 words',
     }),
 });
@@ -85,7 +85,7 @@ export function CommentForm({
     defaultValues: {
       content: initialValue,
     },
-    // mode: 'onChange', // 👈 Validate on every change
+    mode: 'onChange', // 👈 Validate on every change
   });
 
   // Watch the 'content' field to get its current value
@@ -106,11 +106,11 @@ export function CommentForm({
         placeholder="Write your comment..."
         data-testid={inputTestId}
       />
-      <span className="character-count">{charCount}/{255}</span>
+      <span className="character-count">{charCount}/{MAX_LENGTH}</span>
       {errors.content && (
         <ErrorMessage>{errors.content.message}</ErrorMessage>
       )}
-      <SubmitButton type="submit" disabled={isSubmitting || charCount > 255}>
+      <SubmitButton type="submit" disabled={isSubmitting || charCount > MAX_LENGTH}>
         {isSubmitting ? 'Submitting...' : submitLabel}
       </SubmitButton>
     </Form>
