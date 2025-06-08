@@ -40,15 +40,15 @@ const SubmitButton = styled.button`
   }
 `;
 
-// export function CommentForm() {
-//   return (
-//     <Form>
-//       <TextArea
-//         placeholder="Write your comment..."
-//       />    
-//       <SubmitButton type="submit">
-//         Post Comment
-//       </SubmitButton>
-//     </Form>
-//   );
-// }
+export function CommentForm() {
+  return (
+    <Form>
+      <TextArea
+        placeholder="Write your comment..."
+      />    
+      <SubmitButton type="submit">
+        Post Comment
+      </SubmitButton>
+    </Form>
+  );
+}
