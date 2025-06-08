@@ -59,46 +59,33 @@ const SubmitButton = styled.button`
     cursor: not-allowed;
   }
 `;
-
+ 
 export function CommentForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CommentFormData>({
+    resolver: zodResolver(commentSchema),
+  });
+
+  const handleFormSubmit = async () => {
+
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit(handleFormSubmit)}>
       <TextArea
+        {...register('content')}
         placeholder="Write your comment..."
-      />    
+      />
+      {errors.content && (
+        <ErrorMessage>{errors.content.message}</ErrorMessage>
+      )}
       <SubmitButton type="submit">
         Post Comment
       </SubmitButton>
     </Form>
   );
-}
- 
-// export function CommentForm() {
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//   } = useForm<CommentFormData>({
-//     resolver: zodResolver(commentSchema),
-//   });
-
-//   const handleFormSubmit = async () => {
-
-//   };
-
-//   return (
-//     <Form onSubmit={handleSubmit(handleFormSubmit)}>
-//       <TextArea
-//         {...register('content')}
-//         placeholder="Write your comment..."
-//       />
-//       {errors.content && (
-//         <ErrorMessage>{errors.content.message}</ErrorMessage>
-//       )}
-//       <SubmitButton type="submit">
-//         Post Comment
-//       </SubmitButton>
-//     </Form>
-//   );
-// } 
+} 
 
