@@ -66,10 +66,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!response.ok) {
       throw new Error('Invalid credentials');
     }
-   
+
     const { access_token } = await response.json();
     localStorage.setItem('token', access_token);
-    
+
     const decoded = jwtDecode<{ sub: string }>(access_token);
     const userResponse = await fetch(`${USER_API_URL}/${decoded.sub}`);
     const userData = await userResponse.json();

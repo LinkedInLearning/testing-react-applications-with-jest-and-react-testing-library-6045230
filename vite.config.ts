@@ -14,7 +14,6 @@ export default defineConfig({
       exclude: [
         ...coverageConfigDefaults.exclude, // Use Vitest's default excluded files
         'src/main.tsx', // Exclude entry point files
-        'src/types',
       ],
     },
   },
