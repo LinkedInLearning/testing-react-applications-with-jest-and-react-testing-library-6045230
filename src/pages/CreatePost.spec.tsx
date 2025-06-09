@@ -1,4 +1,4 @@
-import { describe, it, vi, expect, beforeEach, afterAll, Mock } from 'vitest';
+import { describe, it, vi, expect, beforeEach, afterAll, afterEach, Mock } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { CreatePost } from './CreatePost';
@@ -6,6 +6,8 @@ import { CreatePost } from './CreatePost';
 import { useAuth } from '../contexts/AuthContext';
 import { createPost } from '../services/post';
 
+// Create mock functions
+const navigateMock = vi.fn();
 
 // Mock the useNavigate hook
 vi.mock('react-router-dom', () => ({
@@ -28,17 +30,20 @@ const originalEnv = import.meta.env.VITE_API_URL;
 // Set test value
 import.meta.env.VITE_API_URL = 'https://api.example.com';
 
-// Create mock functions
-const navigateMock = vi.fn();
-
 describe('CreatePost component', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    navigateMock.mockClear();
   });
 
   afterAll(() => {
     import.meta.env.VITE_API_URL = originalEnv;
   })
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+  
 
   it('redirects to login if user is not authenticated', () => {
     // Mock unauthenticated state
@@ -223,7 +228,9 @@ describe('CreatePost component', () => {
     });
 
     // Navigate should not be called
-    expect(navigateMock).not.toHaveBeenCalled();
+    await waitFor(() => {
+      expect(navigateMock).not.toHaveBeenCalled();
+    });
 
     // Clean up
     consoleErrorSpy.mockRestore();
