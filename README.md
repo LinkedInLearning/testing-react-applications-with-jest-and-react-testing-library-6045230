@@ -34,3 +34,24 @@ To resolve this issue:
 [lil-course-url]: https://www.linkedin.com/learning/
 [lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4E0DAQG0eDHsyOSqTA/learning-public-crop_675_1200/B4EZVdqqdwHUAY-/0/1741033220778?e=2147483647&v=beta&t=FxUDo6FA8W8CiFROwqfZKL_mzQhYx9loYLfjN-LNjgA
 
+## Start the development server:
+npm run dev
+
+## Run all tests:
+npm test
+
+## Run tests with coverage:
+npm run test-coverage
+
+## Commiting changes
+git add .
+git commit -m "BRANCH#_VIDEO#"
+git checkout BRANCH#_VIDEO#
+
+## Viewing All Branches in Folders
+git fetch --all
+
+for branch in $(git branch -r | grep -v '\->' | sed 's/origin\///'); do
+  git worktree add $branch $branch
+done
+
