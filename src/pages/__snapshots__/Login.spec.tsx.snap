@@ -1,0 +1,454 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Login Component Snapshots > renders error state correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-VHjGu dUAksA"
+  >
+    <div
+      class="sc-gnOvAp jrVZLq"
+    >
+      <div
+        class="sc-dQkurY ckYwKI"
+      >
+        <h1
+          class="sc-glJfXD keBBgA"
+        >
+          Welcome Back
+        </h1>
+        <p
+          class="sc-dOfePm enCxEj"
+        >
+          Sign in to continue to your account
+        </p>
+      </div>
+      <form
+        class="sc-jgmqJh bFKKOZ"
+      >
+        <div
+          class="sc-jRLeyu eKKQYG"
+        >
+          <svg
+            class="lucide lucide-log-in "
+            fill="none"
+            height="18"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="18"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"
+            />
+            <polyline
+              points="10 17 15 12 10 7"
+            />
+            <line
+              x1="15"
+              x2="3"
+              y1="12"
+              y2="12"
+            />
+          </svg>
+          Invalid email or password
+        </div>
+        <div
+          class="sc-gIIpAQ kQrbOK"
+        >
+          <div
+            class="sc-ihGilW eqjTkv"
+          >
+            <svg
+              class="lucide lucide-mail "
+              fill="none"
+              height="18"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="16"
+                rx="2"
+                width="20"
+                x="2"
+                y="4"
+              />
+              <path
+                d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+              />
+            </svg>
+          </div>
+          <input
+            class="sc-kFkjun sNfA-d"
+            placeholder="Email address"
+            required=""
+            type="email"
+            value="test@example.com"
+          />
+        </div>
+        <div
+          class="sc-gIIpAQ kQrbOK"
+        >
+          <div
+            class="sc-ihGilW eqjTkv"
+          >
+            <svg
+              class="lucide lucide-lock "
+              fill="none"
+              height="18"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="11"
+                rx="2"
+                ry="2"
+                width="18"
+                x="3"
+                y="11"
+              />
+              <path
+                d="M7 11V7a5 5 0 0 1 10 0v4"
+              />
+            </svg>
+          </div>
+          <input
+            class="sc-kFkjun sNfA-d"
+            placeholder="Password"
+            required=""
+            type="password"
+            value="Password123"
+          />
+        </div>
+        <button
+          class="sc-cRHGzb STQdD"
+          type="submit"
+        >
+          <svg
+            class="lucide lucide-log-in "
+            fill="none"
+            height="18"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="18"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"
+            />
+            <polyline
+              points="10 17 15 12 10 7"
+            />
+            <line
+              x1="15"
+              x2="3"
+              y1="12"
+              y2="12"
+            />
+          </svg>
+          Sign In
+        </button>
+        <div
+          class="sc-jOTjWM hPbKnK"
+        >
+          Don't have an account?
+          <a
+            href="/register"
+          >
+            Create account
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Login Component Snapshots > renders initial login form correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-VHjGu dUAksA"
+  >
+    <div
+      class="sc-gnOvAp jrVZLq"
+    >
+      <div
+        class="sc-dQkurY ckYwKI"
+      >
+        <h1
+          class="sc-glJfXD keBBgA"
+        >
+          Welcome Back
+        </h1>
+        <p
+          class="sc-dOfePm enCxEj"
+        >
+          Sign in to continue to your account
+        </p>
+      </div>
+      <form
+        class="sc-jgmqJh bFKKOZ"
+      >
+        <div
+          class="sc-gIIpAQ kQrbOK"
+        >
+          <div
+            class="sc-ihGilW eqjTkv"
+          >
+            <svg
+              class="lucide lucide-mail "
+              fill="none"
+              height="18"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="16"
+                rx="2"
+                width="20"
+                x="2"
+                y="4"
+              />
+              <path
+                d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+              />
+            </svg>
+          </div>
+          <input
+            class="sc-kFkjun sNfA-d"
+            placeholder="Email address"
+            required=""
+            type="email"
+            value=""
+          />
+        </div>
+        <div
+          class="sc-gIIpAQ kQrbOK"
+        >
+          <div
+            class="sc-ihGilW eqjTkv"
+          >
+            <svg
+              class="lucide lucide-lock "
+              fill="none"
+              height="18"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="11"
+                rx="2"
+                ry="2"
+                width="18"
+                x="3"
+                y="11"
+              />
+              <path
+                d="M7 11V7a5 5 0 0 1 10 0v4"
+              />
+            </svg>
+          </div>
+          <input
+            class="sc-kFkjun sNfA-d"
+            placeholder="Password"
+            required=""
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          class="sc-cRHGzb STQdD"
+          type="submit"
+        >
+          <svg
+            class="lucide lucide-log-in "
+            fill="none"
+            height="18"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="18"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"
+            />
+            <polyline
+              points="10 17 15 12 10 7"
+            />
+            <line
+              x1="15"
+              x2="3"
+              y1="12"
+              y2="12"
+            />
+          </svg>
+          Sign In
+        </button>
+        <div
+          class="sc-jOTjWM hPbKnK"
+        >
+          Don't have an account?
+          <a
+            href="/register"
+          >
+            Create account
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Login Component Snapshots > renders loading state correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-VHjGu dUAksA"
+  >
+    <div
+      class="sc-gnOvAp jrVZLq"
+    >
+      <div
+        class="sc-dQkurY ckYwKI"
+      >
+        <h1
+          class="sc-glJfXD keBBgA"
+        >
+          Welcome Back
+        </h1>
+        <p
+          class="sc-dOfePm enCxEj"
+        >
+          Sign in to continue to your account
+        </p>
+      </div>
+      <form
+        class="sc-jgmqJh bFKKOZ"
+      >
+        <div
+          class="sc-gIIpAQ kQrbOK"
+        >
+          <div
+            class="sc-ihGilW eqjTkv"
+          >
+            <svg
+              class="lucide lucide-mail "
+              fill="none"
+              height="18"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="16"
+                rx="2"
+                width="20"
+                x="2"
+                y="4"
+              />
+              <path
+                d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+              />
+            </svg>
+          </div>
+          <input
+            class="sc-kFkjun sNfA-d"
+            placeholder="Email address"
+            required=""
+            type="email"
+            value="test@example.com"
+          />
+        </div>
+        <div
+          class="sc-gIIpAQ kQrbOK"
+        >
+          <div
+            class="sc-ihGilW eqjTkv"
+          >
+            <svg
+              class="lucide lucide-lock "
+              fill="none"
+              height="18"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                height="11"
+                rx="2"
+                ry="2"
+                width="18"
+                x="3"
+                y="11"
+              />
+              <path
+                d="M7 11V7a5 5 0 0 1 10 0v4"
+              />
+            </svg>
+          </div>
+          <input
+            class="sc-kFkjun sNfA-d"
+            placeholder="Password"
+            required=""
+            type="password"
+            value="Password123"
+          />
+        </div>
+        <button
+          class="sc-cRHGzb STQdD"
+          disabled=""
+          type="submit"
+        >
+          Signing in...
+        </button>
+        <div
+          class="sc-jOTjWM hPbKnK"
+        >
+          Don't have an account?
+          <a
+            href="/register"
+          >
+            Create account
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;

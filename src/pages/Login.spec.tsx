@@ -60,7 +60,7 @@ const submitForm = async () => {
   return submitButton;
 };
 
-describe.skip('Login Component Snapshots', () => {
+describe('Login Component Snapshots', () => {
   it('renders initial login form correctly', () => {
     const { asFragment } = renderLogin();
     expect(asFragment()).toMatchSnapshot();
