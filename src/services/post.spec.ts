@@ -29,6 +29,9 @@ describe('createPost', () => {
   };
 
   it('sends POST request with correct data and headers', async () => {
+    const fixedTimestamp = 1749465320049; // same value you expect in the URL
+    vi.spyOn(Date, 'now').mockReturnValue(fixedTimestamp);
+
     const mockResponse = {
       id: 1,
       title: params.title,

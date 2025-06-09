@@ -35,7 +35,7 @@ const TestComponent = () => {
   );
 };
 
-describe.skip('AuthContext', () => {
+describe('AuthContext', () => {
   beforeEach(() => {
     localStorage.clear();
     vi.clearAllMocks();

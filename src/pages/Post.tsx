@@ -226,7 +226,7 @@ export function Post() {
               </span>
               <span>
                 <Calendar size={18} />
-                {new Date().toLocaleDateString()}
+                {new Date('2025-04-26').toLocaleDateString()}
               </span>
             </AuthorInfo>
             <PostStats>
