@@ -28,14 +28,30 @@ To resolve this issue:
 2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
 3. [Course-specific instructions]
 
-## Run the command below to create branches on codespaces
-git fetch --all
-for branch in $(git branch -r | grep -v '\->' | sed 's/origin\///'); do
-  git worktree add $branch $branch
-done
 
 [0]: # (Replace these placeholder URLs with actual course URLs)
 
 [lil-course-url]: https://www.linkedin.com/learning/
 [lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4E0DAQG0eDHsyOSqTA/learning-public-crop_675_1200/B4EZVdqqdwHUAY-/0/1741033220778?e=2147483647&v=beta&t=FxUDo6FA8W8CiFROwqfZKL_mzQhYx9loYLfjN-LNjgA
+
+## Start the development server:
+npm run dev
+
+## Run all tests:
+npm test
+
+## Run tests with coverage:
+npm run test-coverage
+
+## Commiting changes
+git add .
+git commit -m "BRANCH#_VIDEO#"
+git checkout BRANCH#_VIDEO#
+
+## Viewing All Branches in Folders
+git fetch --all
+
+for branch in $(git branch -r | grep -v '\->' | sed 's/origin\///'); do
+  git worktree add $branch $branch
+done
 
