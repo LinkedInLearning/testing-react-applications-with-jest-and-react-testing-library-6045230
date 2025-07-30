@@ -3,6 +3,10 @@ This is the repository for the LinkedIn Learning course `Testing React Applicati
 
 ![course-name-alt-text][lil-thumbnail-url] 
 
+## Course Description
+
+<p>This course is designed for advanced React developers who want to master testing practices using React Testing Library. Join instructor Oluchukwu Okpala as she demonstrates how to write effective unit and integration tests, simulate user interactions, mock APIs, and successfully apply test-driven development (TDD) principles. By the end of this course, you’ll be prepared to ensure your React applications are robust, scalable, and maintainable through comprehensive testing techniques and best practices.</p><p>This course is integrated with GitHub Codespaces, an instant cloud developer environment that offers all the functionality of your favorite IDE without the need for any local machine setup. With GitHub Codespaces, you can get hands-on practice from any machine, at any time, all while using a tool that you’ll likely encounter in the workplace. Check out “Using GitHub Codespaces" with this course to learn how to get started.</p>
+
 _See the readme file in the main branch for updated instructions and information._
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
@@ -22,17 +26,6 @@ To resolve this issue:
     Add changes to git using this command: git add .
 	Commit changes using this command: git commit -m "some message"
 
-## Installing
-1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
-
-
-[0]: # (Replace these placeholder URLs with actual course URLs)
-
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4E0DAQG0eDHsyOSqTA/learning-public-crop_675_1200/B4EZVdqqdwHUAY-/0/1741033220778?e=2147483647&v=beta&t=FxUDo6FA8W8CiFROwqfZKL_mzQhYx9loYLfjN-LNjgA
 
 ## Start the development server:
 npm run dev
@@ -54,4 +47,15 @@ git fetch --all
 for branch in $(git branch -r | grep -v '\->' | sed 's/origin\///'); do
   git worktree add $branch $branch
 done
+
+## Instructor
+
+Oluchukwu Okpala
+
+Software Engineer
+
+[0]: # (Replace these placeholder URLs with actual course URLs)
+
+[lil-course-url]: https://www.linkedin.com/learning/testing-react-applications-with-jest-and-react-testing-library
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D560DAQHQsTjEe9r2wQ/learning-public-crop_675_1200/B56ZhSEsP5H0AY-/0/1753723619112?e=2147483647&v=beta&t=rHAPD4UaACGdo37VOX43Lg4MJ0XqN0GVfA-kyCk1PS4
 
